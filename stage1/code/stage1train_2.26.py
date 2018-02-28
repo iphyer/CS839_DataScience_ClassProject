@@ -1,4 +1,4 @@
-%matplotlib inline
+#%matplotlib inline
 import pandas as pd
 import numpy as np
 import random
@@ -16,7 +16,7 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 from nltk.corpus import stopwords
 
 
-f = open('surname12.txt', 'r')
+f = open('surname10.txt', 'r')
 surname_list = f.read().split('\n')
 f = open('cityname.txt', 'r')
 cityname_list = f.read().split('\n')

@@ -1,0 +1,33 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Maas et~al.(2011)Maas, Daly, Pham, Huang, Ng, and
+  Potts]{maas-EtAl:2011:ACL-HLT2011}
+Maas, Andrew~L., Daly, Raymond~E., Pham, Peter~T., Huang, Dan, Ng, Andrew~Y.,
+  and Potts, Christopher.
+\newblock Learning word vectors for sentiment analysis.
+\newblock In \emph{Proceedings of the 49th Annual Meeting of the Association
+  for Computational Linguistics: Human Language Technologies}, pp.\  142--150,
+  Portland, Oregon, USA, June 2011. Association for Computational Linguistics.
+\newblock URL \url{http://www.aclweb.org/anthology/P11-1015}.
+
+\bibitem[McKinney(2015)]{mckinney2015pandas}
+McKinney, Wes.
+\newblock pandas: a python data analysis library.
+\newblock \emph{see http://pandas. pydata. org}, 2015.
+
+\bibitem[Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel, Thirion,
+  Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos,
+  Cournapeau, Brucher, Perrot, and Duchesnay]{scikit-learn}
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel,
+  O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J.,
+  Passos, A., Cournapeau, D., Brucher, M., Perrot, M., and Duchesnay, E.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock \emph{Journal of Machine Learning Research}, 12:\penalty0 2825--2830,
+  2011.
+
+\end{thebibliography}

@@ -1,0 +1,699 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% ICML 2017 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Use the following line _only_ if you're still using LaTeX 2.09.
+%\documentstyle[icml2017,epsf,natbib]{article}
+% If you rely on Latex2e packages, like most moden people use this:
+\documentclass{article}
+
+% use Times
+\usepackage{times}
+% For figures
+\usepackage{graphicx} % more modern
+%\usepackage{epsfig} % less modern
+\usepackage{subfigure} 
+\usepackage[T1]{fontenc}
+% For citations
+\usepackage{natbib}
+
+% For algorithms
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% As of 2011, we use the hyperref package to produce hyperlinks in the
+% resulting PDF.  If this breaks your system, please commend out the
+% following usepackage line and replace \usepackage{icml2017} with
+% \usepackage[nohyperref]{icml2017} above.
+\usepackage{hyperref}
+
+% Packages hyperref and algorithmic misbehave sometimes.  We can fix
+% this with the following command.
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Employ the following version of the ``usepackage'' statement for
+% submitting the draft version of the paper for review.  This will set
+% the note in the first column to ``Under review.  Do not distribute.''
+%\usepackage{icml2017} 
+
+% Employ this version of the ``usepackage'' statement after the paper has
+% been accepted, when creating the final version.  This will set the
+% note in the first column to ``Proceedings of the...''
+\usepackage[accepted]{icml2017}
+
+
+% The \icmltitle you define below is probably too long as a header.
+% Therefore, a short form for the running title is supplied here:
+\icmltitlerunning{Project of CS 839 UW-Madison Spring 2018}
+
+\begin{document} 
+
+\twocolumn[
+\icmltitle{CS839 Stage 1 Report: Information extraction from natural text }
+
+% It is OKAY to include author information, even for blind
+% submissions: the style file will automatically remove it for you
+% unless you've provided the [accepted] option to the icml2017
+% package.
+
+% list of affiliations. the first argument should be a (short)
+% identifier you will use later to specify author affiliations
+% Academic affiliations should list Department, University, City, Region, Country
+% Industry affiliations should list Company, City, Region, Country
+
+% you can specify symbols, otherwise they are numbered in order
+% ideally, you should not use this facility. affiliations will be numbered
+% in order of appearance and this is the preferred way.
+\icmlsetsymbol{equal}{*}
+
+\begin{icmlauthorlist}
+\icmlauthor{Xiuyuan He}{equal,uwm}
+\icmlauthor{Chenlai Shi}{equal,uwm}
+\icmlauthor{Mingren Shen}{equal,uwm}
+%\icmlauthor{Iaesut Saoeu}{ed}
+%\icmlauthor{Fiuea Rrrr}{to}
+%\icmlauthor{Tateu H.~Yasehe}{ed,to,goo} 
+%\icmlauthor{Aaoeu Iasoh}{goo}
+%\icmlauthor{Buiui Eueu}{ed}
+%\icmlauthor{Aeuia Zzzz}{ed}
+%\icmlauthor{Bieea C.~Yyyy}{to,goo}
+%\icmlauthor{Teoau Xxxx}{ed}
+%\icmlauthor{Eee Pppp}{ed}
+\end{icmlauthorlist}
+
+\icmlaffiliation{uwm}{University of Wisconsin,Madison , USA}
+%\icmlaffiliation{goo}{Googol ShallowMind, New London, Michigan, USA}
+%\icmlaffiliation{ed}{University of Edenborrow, Edenborrow, United Kingdom}
+
+\icmlcorrespondingauthor{Xiuyuan He}{xhe75@wisc.edu}
+\icmlcorrespondingauthor{Chenlai Shi}{cshi29@wisc.edu}
+\icmlcorrespondingauthor{Mingren Shen}{mshen32@wisc.edu}
+
+% You may provide any keywords that you 
+% find helpful for describing your paper; these are used to populate 
+% the "keywords" metadata in the PDF but will not be shown in the document
+\icmlkeywords{Entity Extractor,Random Forest,Naive Bayes Classifier,machine learning}
+
+\vskip 0.3in
+]
+
+% this must go after the closing bracket ] following \twocolumn[ ...
+
+% This command actually creates the footnote in the first column
+% listing the affiliations and the copyright notice.
+% The command takes one argument, which is text to display at the start of the footnote.
+% The \icmlEqualContribution command is standard text for equal contribution.
+% Remove it (just {}) if you do not need this facility.
+
+%\printAffiliationsAndNotice{}  % leave blank if no need to mention equal contribution
+\printAffiliationsAndNotice{\icmlEqualContribution} % otherwise use the standard text.
+
+%\begin{abstract} 
+
+
+%\end{abstract} 
+
+\section{Name of all team members}
+
+\begin{itemize}
+\setlength\itemsep{0.01em}
+\item Xiuyuan He
+\item Chrissie Watts
+\item Mingren Shen
+\end{itemize}
+
+\section{Entity Type}
+
+We want to extract \textbf{people names} from moive review texts. The moview reviews are from Large Movie Review Dataset v1.0 \cite{maas-EtAl:2011:ACL-HLT2011} by Stanford University \footnote{\url{http://ai.stanford.edu/~amaas/data/sentiment/}}.
+
+Examples are:
+\begin{itemize}
+\setlength\itemsep{0.01em}
+\item Gina Yashere
+\item Chrissie Watts
+\item John's
+\end{itemize}
+
+Detailed rules of the entity type are:
+
+\begin{enumerate}
+\setlength\itemsep{0.01em}
+\item Prefix and Titles like Mr., Mrs., Ms., Director, etc are \textbf{not included}
+\item Suffix Names like Sr., Jr., IV, etc \textbf{ are included}
+\item Names form a possessive with the suffix -'s like John's, Mike's \textbf{are included}
+\item Both Actor Names and Movie Character Names \textbf{are considered names}
+\item People Names used in Movie Titles like "Mr. \& Mrs. Smith"  or Company Names like "Warner Bros. Entertainment Inc" \textbf{are considered names}
+\end{enumerate}
+
+We use "\textless\textgreater" and "\textless/\textgreater"  to mark up all the occurrences of person names. So for the example above, we will mark them like this:
+
+\begin{itemize}
+\setlength\itemsep{0.01em}
+\item <> Gina Yashere </>
+\item <> Chrissie Watts </>
+\item <> John's </>
+\end{itemize}
+
+\section{Data Set}
+\subsection{the total number of mentions that you have marked up}
+
+There are \textbf{1695} mentions of person names are marked up.
+
+\subsection{the number of documents in set I, the number of mentions in set I}
+
+There are \textbf{200} documents in set I and \textbf{1103 }mentions of person names are marked up.
+
+
+\subsection{the number of documents in set J, the number of mentions in set J}
+
+There are \textbf{100} documents in set J and \textbf{592 }mentions of person names are marked up.
+
+\section{Training and Model Selection}
+
+We chose 5 different machine learning models:
+
+\begin{itemize}
+\setlength\itemsep{0.01em}
+\item SVM with RBF kernel
+\item Decision Tree using CART Algorithm
+\item Random Forest
+\item Logistic Regression
+\item Linear Regression
+\end{itemize}
+
+ % (set 0.5 as threshold, with no l1 (LASSO) or l2 (Ridge) regularization)
+
+
+%
+%\section{Relate Work}
+%
+%
+%\begin{description}
+%\item[Zone type index 1]  Residential	: Neighborhood Preservation Area	
+%\item[Zone type index 2] Education, Health, Shopping, Eating, Entertainment, Service:Regional Commercial Area, Recreational/Open Space Area
+%\item[Zone type index 3] Office : Business/Industrial Development Area, Business/Industrial Preservation Area
+%\item[Zone type index 4] Transportation, Service : Neighborhood Development Area
+%\item[Zone type index 5] Office, Entertainment, Shopping, Eating, Service : Opportunity Area, Institutional Area
+%\item[Zone type index 6] Home, Service, Education, Shopping, Eating, Entertainment, Health, Office:Neighborhood Commercial Area, Neighborhood Development Area
+%\end{description}
+%
+%
+%
+%
+%
+%The zone type information is obtained by projecting each geo-tagged tweet onto the St Louis land use map seen Fig.~\ref{fig1} with QGIS \cite{qgis2015qgis}. 
+%
+%\begin{figure}[ht]
+%\vskip 0.2in
+%\begin{center}
+%\centerline{\includegraphics[width=\columnwidth]{fig1.png}}
+%\caption{St Louis Land Use Map}
+%\label{fig1}
+%\end{center}
+%\vskip -0.2in
+%\end{figure} 
+%
+
+%
+%\begin{table}[tp]
+%\centering
+%\caption{Accuracy Table of Content-Based Naive Bayes Network}
+%\label{tab1}
+%\begin{center}
+%\begin{small}
+%\begin{sc}
+%\begin{tabular}{llll}
+%Experiment & Precision & Recall & F1-score \\ \hline
+%1          & 0.67      & 0.7    & 0.68     \\
+%2          & 0.72      & 0.73   & 0.72     \\
+%3          & 0.71      & 0.7    & 0.71     \\
+%4          & 0.72      & 0.72   & 0.72     \\
+%5          & 0.69      & 0.69   & 0.69     \\  \hline
+%Ave.       & 0.71      & 0.71   & 0.71   
+%\end{tabular}
+%\end{sc}
+%\end{small}
+%\end{center}
+%\end{table}
+%
+%
+%\begin{table}[tp]
+%\centering
+%\caption{Performance Table of Combination of all feature with different models}
+%\label{tab2}
+%\begin{center}
+%\begin{small}
+%\begin{sc}
+%\begin{tabular}{llll}
+%Methods                    & Precision & Recall & F1-score \\ \hline
+%Random Forest              & \textbf{0.720}      & 0.725  & 0.720     \\
+%Decision Tree              & 0.715     & 0.733  & 0.723    \\
+%Extra Tree                 & 0.713     & 0.718  & 0.717    \\
+%AdaBoost Tree              & 0.718     & 0.725  & 0.718    \\
+%Gradient Boosting Tree     & 0.715     & 0.713  & 0.710     \\
+%Multi-layer Neural Network & 0.688     & 0.708  & 0.695   
+%\end{tabular}
+%\end{sc}
+%\end{small}
+%\end{center}
+%\end{table}
+%
+%
+%\begin{table*}[tp]
+%\centering
+%\caption{Performance Table of Random Forest with all features and first name based methods}
+%\label{tab3}
+%\begin{center}
+%\begin{small}
+%\begin{sc}
+%\begin{tabular}{llll}
+%Methods                                     & Precision & Recall & F1-score \\
+%First name based                            & 0.898     & 0.785  & 0.832    \\
+%Random Forest with all features & 0.8230     & 0.835  & 0.830   
+%\end{tabular}
+%\end{sc}
+%\end{small}
+%\end{center}
+%\end{table*}
+%
+%
+%
+%\section{Discussion}
+%
+%
+%\section{Conclusions}
+
+
+
+
+
+%\begin{center}
+%\textbf{\texttt{http://icml.cc/2017/}}
+%\end{center}
+%Send questions about submission and electronic templates to
+%\texttt{icml2017pc@gmail.com}.
+%
+%The guidelines below will be enforced for initial submissions and
+%camera-ready copies.  Here is a brief summary:
+%\begin{itemize}
+%\item Submissions must be in PDF.
+%\item The maximum paper length is \textbf{8 pages excluding references and acknowledgements, and 10 pages
+%  including references and acknowledgements} (pages 9 and 10 must contain only references and acknowledgements).
+%\item Do \textbf{not include author information or acknowledgements} in your initial
+%submission.
+%\item Your paper should be in \textbf{10 point Times font}.
+%\item Make sure your PDF file only uses Type-1 fonts.
+%\item Place figure captions {\em under} the figure (and omit titles from inside
+%the graphic file itself).  Place table captions {\em over} the table.
+%\item References must include page numbers whenever possible and be as complete
+%as possible.  Place multiple citations in chronological order.  
+%\item Do not alter the style template; in particular, do not compress the paper
+%format by reducing the vertical spaces.
+%\item Keep your abstract brief and self-contained, one
+%   paragraph and roughly 4--6 sentences.  Gross violations will require correction at the camera-ready phase.
+%  Title should have content words capitalized.
+%  
+%
+%\end{itemize}
+%
+%\subsection{Submitting Papers}
+%
+%{\bf Paper Deadline:} The deadline for paper submission to ICML 2017
+%is at \textbf{23:59 Universal Time (3:59 p.m.\ Pacific Standard Time) on February 24, 2017}.
+%If your full submission does not reach us by this time, it will 
+%not be considered for publication. There is no separate abstract submission.
+%
+%{\bf Anonymous Submission:} To facilitate blind review, no identifying
+%author information should appear on the title page or in the paper
+%itself.  Section~\ref{author info} will explain the details of how to
+%format this.
+%
+%{\bf Simultaneous Submission:} ICML will not accept any paper which,
+%at the time of submission, is under review for another conference or
+%has already been published. This policy also applies to papers that
+%overlap substantially in technical content with conference papers
+%under review or previously published. ICML submissions must not be
+%submitted to other conferences during ICML's review period. Authors
+%may submit to ICML substantially different versions of journal papers
+%that are currently under review by the journal, but not yet accepted
+%at the time of submission. Informal publications, such as technical
+%reports or papers in workshop proceedings which do not appear in
+%print, do not fall under these restrictions.
+%
+%\medskip
+%
+%To ensure our ability to print submissions, authors must provide their
+%manuscripts in \textbf{PDF} format.  Furthermore, please make sure
+%that files contain only Type-1 fonts (e.g.,~using the program {\tt
+%  pdffonts} in linux or using File/DocumentProperties/Fonts in
+%Acrobat).  Other fonts (like Type-3) might come from graphics files
+%imported into the document.
+%
+%Authors using \textbf{Word} must convert their document to PDF.  Most
+%of the latest versions of Word have the facility to do this
+%automatically.  Submissions will not be accepted in Word format or any
+%format other than PDF. Really. We're not joking. Don't send Word.
+%
+%Those who use \textbf{\LaTeX} to format their accepted papers need to pay close
+%attention to the typefaces used.  Specifically, when producing the PDF by first
+%converting the dvi output of \LaTeX\ to Postscript the default behavior is to
+%use non-scalable Type-3 PostScript bitmap fonts to represent the standard
+%\LaTeX\ fonts. The resulting document is difficult to read in electronic form;
+%the type appears fuzzy. To avoid this problem, dvips must be instructed to use
+%an alternative font map.  This can be achieved with the following two commands:
+%
+%{\footnotesize
+%\begin{verbatim}
+%dvips -Ppdf -tletter -G0 -o paper.ps paper.dvi
+%ps2pdf paper.ps
+%\end{verbatim}}
+%Note that it is a zero following the ``-G''.  This tells dvips to use
+%the config.pdf file (and this file refers to a better font mapping).
+%
+%A better alternative is to use the \textbf{pdflatex} program instead of
+%straight \LaTeX. This program avoids the Type-3 font problem, however you must
+%ensure that all of the fonts are embedded (use {\tt pdffonts}). If they are
+%not, you need to configure pdflatex to use a font map file that specifies that
+%the fonts be embedded. Also you should ensure that images are not downsampled
+%or otherwise compressed in a lossy way.
+%
+%Note that the 2017 style files use the {\tt hyperref} package to
+%make clickable links in documents.  If this causes problems for you,
+%add {\tt nohyperref} as one of the options to the {\tt icml2017}
+%usepackage statement.
+%
+%\subsection{Reacting to Reviews}
+%
+%We will continue the ICML tradition in which the authors are given the
+%option of providing a short reaction to the initial reviews. These
+%reactions will be taken into account in the discussion among the
+%reviewers and area chairs.
+%
+%\subsection{Submitting Final Camera-Ready Copy}
+%
+%The final versions of papers accepted for publication should follow the
+%same format and naming convention as initial submissions, except of
+%course that the normal author information (names and affiliations)
+%should be given.  See Section~\ref{final author} for details of how to
+%format this.
+%
+%The footnote, ``Preliminary work.  Under review by the International
+%Conference on Machine Learning (ICML).  Do not distribute.'' must be
+%modified to ``\textit{Proceedings of the
+%$\mathit{34}^{th}$ International Conference on Machine Learning},
+%Sydney, Australia, PMLR 70, 2017.
+%Copyright 2017 by the author(s).'' 
+%
+%For those using the \textbf{\LaTeX} style file, this change (and others) is
+%handled automatically by simply changing
+%$\mathtt{\backslash usepackage\{icml2017\}}$ to 
+%$$\mathtt{\backslash usepackage[accepted]\{icml2017\}}$$
+%Authors using \textbf{Word} must edit the
+%footnote on the first page of the document themselves.
+%
+%Camera-ready copies should have the title of the paper as running head
+%on each page except the first one.  The running title consists of a
+%single line centered above a horizontal rule which is $1$ point thick.
+%The running head should be centered, bold and in $9$ point type.  The
+%rule should be $10$ points above the main text.  For those using the
+%\textbf{\LaTeX} style file, the original title is automatically set as running
+%head using the {\tt fancyhdr} package which is included in the ICML
+%2017 style file package.  In case that the original title exceeds the
+%size restrictions, a shorter form can be supplied by using
+%
+%\verb|\icmltitlerunning{...}|
+%
+%just before $\mathtt{\backslash begin\{document\}}$.
+%Authors using \textbf{Word} must edit the header of the document themselves.
+%
+%\section{Format of the Paper} 
+% 
+%All submissions must follow the same format to ensure the printer can
+%reproduce them without problems and to let readers more easily find
+%the information that they desire.
+%
+%\subsection{Length and Dimensions}
+%
+%Papers must not exceed eight (8) pages, including all figures, tables,
+%and appendices, but excluding references and acknowledgements. When references and acknowledgements are included,
+%the paper must not exceed ten (10) pages.
+%Acknowledgements should be limited to grants and people who contributed to the paper.
+%Any submission that exceeds 
+%this page limit or that diverges significantly from the format specified 
+%herein will be rejected without review.
+%
+%The text of the paper should be formatted in two columns, with an
+%overall width of 6.75 inches, height of 9.0 inches, and 0.25 inches
+%between the columns. The left margin should be 0.75 inches and the top
+%margin 1.0 inch (2.54~cm). The right and bottom margins will depend on
+%whether you print on US letter or A4 paper, but all final versions
+%must be produced for US letter size.
+%
+%The paper body should be set in 10~point type with a vertical spacing
+%of 11~points. Please use Times typeface throughout the text.
+%
+%\subsection{Title}
+%
+%The paper title should be set in 14~point bold type and centered
+%between two horizontal rules that are 1~point thick, with 1.0~inch
+%between the top rule and the top edge of the page. Capitalize the
+%first letter of content words and put the rest of the title in lower
+%case.
+%
+%\subsection{Author Information for Submission}
+%\label{author info}
+%
+%To facilitate blind review, author information must not appear.  If
+%you are using \LaTeX\/ and the \texttt{icml2017.sty} file, you may use
+%\verb+\icmlauthor{...}+ to specify authors and \verb+\icmlaffiliation{...}+ to specify affiliations. (Read the TeX code used to produce this document for an example usage.)  The author information
+%will  not be printed unless {\tt accepted} is passed as an argument to the
+%style file. (Again, see the TeX code used to produce this PDF.) 
+%Submissions that include the author information will not
+%be reviewed.
+%
+%\subsubsection{Self-Citations}
+%
+%If your are citing published papers for which you are an author, refer
+%to yourself in the third person. In particular, do not use phrases
+%that reveal your identity (e.g., ``in previous work \cite{langley00}, we 
+%have shown \ldots'').
+%
+%Do not anonymize citations in the reference section by removing or
+%blacking out author names. The only exception are manuscripts that are
+%not yet published (e.g. under submission). If you choose to refer to
+%such unpublished manuscripts \cite{anonymous}, anonymized copies have 
+%to be submitted
+%as Supplementary Material via CMT. However, keep in mind that an ICML
+%paper should be self contained and should contain sufficient detail
+%for the reviewers to evaluate the work. In particular, reviewers are
+%not required to look a the Supplementary Material when writing their
+%review.
+%
+%\subsubsection{Camera-Ready Author Information}
+%\label{final author}
+%
+%If a paper is accepted, a final camera-ready copy must be prepared.
+%%
+%For camera-ready papers, author information should start 0.3~inches
+%below the bottom rule surrounding the title. The authors' names should
+%appear in 10~point bold type, in a row, separated by white space, and centered. 
+%Author names should not be broken across lines.
+%Unbolded superscripted numbers, starting 1, should be used to refer to affiliations. 
+%Affiliations should be numbered in the order of appearance.  A single footnote block of text should be used to list all the affiliations. (Academic affiliations should list Department, University, City, State/Region, Country. Similarly for industrial affiliations.)
+%Each distinct affiliations should be listed once.  If an author has multiple affiliations, multiple superscripts should be placed after the name, separated by thin spaces.  If the authors would like to highlight equal contribution by multiple first authors, those authors should have an asterisk placed after their name in superscript, and the term ``\textsuperscript{*}Equal contribution" should be placed in the footnote block ahead of the list of affiliations.  A list of corresponding authors and their emails (in the format Full Name \textless{}email@domain.com\textgreater{}) can follow the list of affiliations. Ideally only one or two names should be listed.
+%
+%
+%A sample file (in PDF) with author names is included in the ICML2017 
+%style file package.  Turn on the \texttt{[accepted]} option to the ICML stylefile to see the names rendered. 
+%All of the guidelines above are automatically met by the \LaTeX\ style file.
+%
+%\subsection{Abstract}
+%
+%The paper abstract should begin in the left column, 0.4~inches below
+%the final address. The heading `Abstract' should be centered, bold,
+%and in 11~point type. The abstract body should use 10~point type, with
+%a vertical spacing of 11~points, and should be indented 0.25~inches
+%more than normal on left-hand and right-hand margins. Insert
+%0.4~inches of blank space after the body. Keep your abstract brief and 
+%self-contained,
+%limiting it to one paragraph and roughly 4--6 sentences.  Gross violations will require correction at the camera-ready phase.
+%
+%\subsection{Partitioning the Text} 
+%
+%You should organize your paper into sections and paragraphs to help
+%readers place a structure on the material and understand its
+%contributions.
+%
+%\subsubsection{Sections and Subsections}
+%
+%Section headings should be numbered, flush left, and set in 11~pt bold
+%type with the content words capitalized. Leave 0.25~inches of space
+%before the heading and 0.15~inches after the heading.
+%
+%Similarly, subsection headings should be numbered, flush left, and set
+%in 10~pt bold type with the content words capitalized. Leave
+%0.2~inches of space before the heading and 0.13~inches afterward.
+%
+%Finally, subsubsection headings should be numbered, flush left, and
+%set in 10~pt small caps with the content words capitalized. Leave
+%0.18~inches of space before the heading and 0.1~inches after the
+%heading. 
+%
+%Please use no more than three levels of headings.
+%
+%\subsubsection{Paragraphs and Footnotes}
+%
+%Within each section or subsection, you should further partition the
+%paper into paragraphs. Do not indent the first line of a given
+%paragraph, but insert a blank line between succeeding ones.
+% 
+%You can use footnotes\footnote{For the sake of readability, footnotes
+%should be complete sentences.} to provide readers with additional
+%information about a topic without interrupting the flow of the paper. 
+%Indicate footnotes with a number in the text where the point is most
+%relevant. Place the footnote in 9~point type at the bottom of the
+%column in which it appears. Precede the first footnote in a column
+%with a horizontal rule of 0.8~inches.\footnote{Multiple footnotes can
+%appear in each column, in the same order as they appear in the text,
+%but spread them across columns and pages if possible.}
+%
+
+%
+%\subsection{Figures}
+% 
+%You may want to include figures in the paper to help readers visualize
+%your approach and your results. Such artwork should be centered,
+%legible, and separated from the text. Lines should be dark and at
+%least 0.5~points thick for purposes of reproduction, and text should
+%not appear on a gray background.
+%
+%Label all distinct components of each figure. If the figure takes the
+%form of a graph, then give a name for each axis and include a legend
+%that briefly describes each curve. Do not include a title inside the
+%figure; instead, the caption should serve this function.
+%
+%Number figures sequentially, placing the figure number and caption
+%{\it after\/} the graphics, with at least 0.1~inches of space before
+%the caption and 0.1~inches after it, as in
+%Figure~\ref{icml-historical}.  The figure caption should be set in
+%9~point type and centered unless it runs two or more lines, in which
+%case it should be flush left.  You may float figures to the top or
+%bottom of a column, and you may set wide figures across both columns
+%(use the environment {\tt figure*} in \LaTeX), but always place
+%two-column figures at the top or bottom of the page.
+%
+%\subsection{Algorithms}
+%
+%If you are using \LaTeX, please use the ``algorithm'' and ``algorithmic'' 
+%environments to format pseudocode. These require 
+%the corresponding stylefiles, algorithm.sty and 
+%algorithmic.sty, which are supplied with this package. 
+%Algorithm~\ref{alg:example} shows an example. 
+%
+%\begin{algorithm}[tb]
+%   \caption{Bubble Sort}
+%   \label{alg:example}
+%\begin{algorithmic}
+%   \STATE {\bfseries Input:} data $x_i$, size $m$
+%   \REPEAT
+%   \STATE Initialize $noChange = true$.
+%   \FOR{$i=1$ {\bfseries to} $m-1$}
+%   \IF{$x_i > x_{i+1}$} 
+%   \STATE Swap $x_i$ and $x_{i+1}$
+%   \STATE $noChange = false$
+%   \ENDIF
+%   \ENDFOR
+%   \UNTIL{$noChange$ is $true$}
+%\end{algorithmic}
+%\end{algorithm}
+% 
+%\subsection{Tables} 
+% 
+%You may also want to include tables that summarize material. Like 
+%figures, these should be centered, legible, and numbered consecutively. 
+%However, place the title {\it above\/} the table with at least 
+%0.1~inches of space before the title and the same after it, as in 
+%Table~\ref{sample-table}. The table title should be set in 9~point 
+%type and centered unless it runs two or more lines, in which case it
+%should be flush left.
+%
+%% Note use of \abovespace and \belowspace to get reasonable spacing 
+%% above and below tabular lines. 
+%
+
+%
+%Tables contain textual material that can be typeset, as contrasted 
+%with figures, which contain graphical material that must be drawn. 
+%Specify the contents of each row and column in the table's topmost
+%row. Again, you may float tables to a column's top or bottom, and set
+%wide tables across both columns, but place two-column tables at the
+%top or bottom of the page.
+% 
+%\subsection{Citations and References} 
+%
+%Please use APA reference format regardless of your formatter
+%or word processor. If you rely on the \LaTeX\/ bibliographic 
+%facility, use {\tt natbib.sty} and {\tt icml2017.bst} 
+%included in the style-file package to obtain this format.
+%
+%Citations within the text should include the authors' last names and
+%year. If the authors' names are included in the sentence, place only
+%the year in parentheses, for example when referencing Arthur Samuel's
+%pioneering work \yrcite{Samuel59}. Otherwise place the entire
+%reference in parentheses with the authors and year separated by a
+%comma \cite{Samuel59}. List multiple references separated by
+%semicolons \cite{kearns89,Samuel59,mitchell80}. Use the `et~al.'
+%construct only for citations with three or more authors or after
+%listing all authors to a publication in an earlier reference \cite{MachineLearningI}.
+%
+%Authors should cite their own work in the third person
+%in the initial version of their paper submitted for blind review.
+%Please refer to Section~\ref{author info} for detailed instructions on how to
+%cite your own papers.
+%
+%Use an unnumbered first-level section heading for the references, and 
+%use a hanging indent style, with the first line of the reference flush
+%against the left margin and subsequent lines indented by 10 points. 
+%The references at the end of this document give examples for journal
+%articles \cite{Samuel59}, conference publications \cite{langley00}, book chapters \cite{Newell81}, books \cite{DudaHart2nd}, edited volumes \cite{MachineLearningI}, 
+%technical reports \cite{mitchell80}, and dissertations \cite{kearns89}. 
+%
+%Alphabetize references by the surnames of the first authors, with
+%single author entries preceding multiple author entries. Order
+%references for the same authors by year of publication, with the
+%earliest first. Make sure that each reference includes all relevant
+%information (e.g., page numbers).
+
+
+
+% Acknowledgements should only appear in the accepted version. 
+%\section*{Acknowledgements} 
+%
+%We would like to sincerely thank Prof.
+
+\subsection*{Software and Data}
+
+We provide all our data and program in Github and you can check them online \url{https://github.com/iphyer/CS839ClassProject}.
+
+We use scikit-learn \cite{scikit-learn} as our machine learning program library and Pandas \cite{mckinney2015pandas} for data processing.
+
+% In the unusual situation where you want a paper to appear in the
+% references without citing it in the main text, use \nocite
+%\nocite{langley00}
+
+\bibliography{example_paper}
+\bibliographystyle{icml2017}
+
+\end{document} 
+
+
+% This document was modified from the file originally made available by
+% Pat Langley and Andrea Danyluk for ICML-2K. This version was
+% created by Lise Getoor and Tobias Scheffer, it was slightly modified  
+% from the 2010 version by Thorsten Joachims & Johannes Fuernkranz, 
+% slightly modified from the 2009 version by Kiri Wagstaff and 
+% Sam Roweis's 2008 version, which is slightly modified from 
+% Prasad Tadepalli's 2007 version which is a lightly 
+% changed version of the previous year's version by Andrew Moore, 
+% which was in turn edited from those of Kristian Kersting and 
+% Codrina Lauth. Alex Smola contributed to the algorithmic style files.  
