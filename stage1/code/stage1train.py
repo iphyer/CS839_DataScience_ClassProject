@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+
+"""
+
+Train Control File for Stage 1
+
+
+"""
+
 %matplotlib inline
 import pandas as pd
 import numpy as np
