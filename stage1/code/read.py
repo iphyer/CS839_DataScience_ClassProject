@@ -4,7 +4,7 @@ from os import listdir
 from os.path import isfile, join
 #import nltk
 from nltk.corpus import stopwords
-mypath = ""
+mypath = "/Users/mingrenshen/Develop/CS839ClassProject/stage1/DataSet/I_Set/"
 files = [f for f in listdir(mypath) if isfile(join(mypath, f)) and f[-4:] == ".txt"]
 combo = [1,2,3,4]
 fields = ['docID','word', 'startPos', 'endPos', 'label','bag','preWord','postWord']

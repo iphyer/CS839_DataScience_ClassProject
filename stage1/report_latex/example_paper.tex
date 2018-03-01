@@ -177,8 +177,10 @@ For the marked up text files, we do the following steps to clean the generated e
 \item delete all numbers
 \item delete all punctuation 
 \item delete all stopping words
-\item delete all 4 words examples( we do not see this in our data set) 
+\item delete all 4 words examples( we do not see names with this pattern in our data set) 
 \end{itemize}
+
+After this steps, we generate the 
 
 \section{Training and Model Selection}
 
@@ -204,7 +206,7 @@ We are using two main rules for post-processing of the prediction results.
 
 First, based on our data set, we think all words that can be a name should be capitalized.  This rule will result in wrong prediction for 23 names ( like Lars von Triers  ) and we put all those names into white name list.
 
-Second, we 
+Second, we mark all examples which contains words in the frequent words list as not a name. The frequent word list are downloaded from 
 
  % (set 0.5 as threshold, with no l1 (LASSO) or l2 (Ridge) regularization)
 
