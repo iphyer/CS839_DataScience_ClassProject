@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 FEB 2018 17:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 FEB 2018 17:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -396,6 +396,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--127
 [][][][][]$\T1/pcr/m/n/9 http : / / ai . stanford . edu / ~amaas / data /
  []
 
+[1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+
+]
 (./example_paper.bbl
 Underfull \hbox (badness 1681) in paragraph at lines 10--17
 \T1/ptm/m/n/10 Huang, Dan, Ng, An-drew Y., and Potts, Christo-
@@ -412,42 +417,37 @@ Underfull \hbox (badness 1342) in paragraph at lines 10--17
 aclweb .
  []
 
-[1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
-
-
-
-])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 687.
-
-[2
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 706.
+ [2
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 687.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 706.
  (./example_paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 687.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 687.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 706.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 706.
 Package rerunfilecheck Info: File `example_paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 687.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 706.
  ) 
 Here is how much of TeX's memory you used:
- 6516 strings out of 492995
- 93605 string characters out of 6132704
+ 6520 strings out of 492995
+ 93656 string characters out of 6132704
  188039 words of memory out of 5000000
  9958 multiletter control sequences out of 15000+600000
  38552 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,11n,45p,687b,430s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,11n,45p,687b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
 17/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on example_paper.pdf (2 pages, 71814 bytes).
+Output written on example_paper.pdf (2 pages, 72737 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
+ 78 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
+ 25 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

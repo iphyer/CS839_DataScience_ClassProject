@@ -168,8 +168,23 @@ There are \textbf{200} documents in set I and \textbf{1103 }mentions of person n
 
 There are \textbf{100} documents in set J and \textbf{592 }mentions of person names are marked up.
 
+\section{Pre-processing}
+
+For the marked up text files, we do the following steps to clean the generated examples.
+
+\begin{itemize}
+\setlength\itemsep{0.01em}
+\item delete all numbers
+\item delete all punctuation 
+\item delete all stopping words
+\item delete all 4 words examples( we do not see this in our data set) 
+\end{itemize}
+
 \section{Training and Model Selection}
 
+\subsection{ Feature Engineering}
+
+\subsection{}
 We chose 5 different machine learning models:
 
 \begin{itemize}
@@ -180,6 +195,16 @@ We chose 5 different machine learning models:
 \item Logistic Regression
 \item Linear Regression
 \end{itemize}
+
+\subsection{}
+
+\subsection{Any Rule-based Post-processing?}
+
+We are using two main rules for post-processing of the prediction results. 
+
+First, based on our data set, we think all words that can be a name should be capitalized.  This rule will result in wrong prediction for 23 names ( like Lars von Triers  ) and we put all those names into white name list.
+
+Second, we 
 
  % (set 0.5 as threshold, with no l1 (LASSO) or l2 (Ridge) regularization)
 
