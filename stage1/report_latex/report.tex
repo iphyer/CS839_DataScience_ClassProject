@@ -180,25 +180,38 @@ For the marked up text files, we do the following steps to clean the generated e
 \item delete all 4 words examples( we do not see names with this pattern in our data set) 
 \end{itemize}
 
-After this steps, we generate the 
 
 \section{Training and Model Selection}
 
 \subsection{ Feature Engineering}
 
-\subsection{}
+\subsection{Performance of classifier M}
 We chose 5 different machine learning models:
 
 \begin{itemize}
 \setlength\itemsep{0.01em}
-\item SVM with RBF kernel
-\item Decision Tree using CART Algorithm
+\item SVM with linear kernel
+\item Decision Tree
 \item Random Forest
 \item Logistic Regression
 \item Linear Regression
 \end{itemize}
 
-\subsection{}
+\begin{table}[h]
+\centering
+\caption{Performance of classifier M}
+\label{table1}
+\begin{tabular}{c|c|c|c}
+classifier   M    & precision & recall & F1     \\  
+Linear regression   & 0.023     & 0.975  & 0.045 \\  
+Logistic regression & 0.038     & 0.681  & 0.073 \\  
+Random Forest       & 0.078     & 0.112  & 0.092 \\  
+Decision tree       & 0.054     & 0.114  & 0.073 \\  
+SVM                 & 0.004     & 0.011  & 0.006  
+\end{tabular}
+\end{table}
+
+So based on the table \ref{table1}, we choose Random Forest as the final method to improve on rule based methods which is referred as classifier X below.
 
 \subsection{Any Rule-based Post-processing?}
 
@@ -206,9 +219,31 @@ We are using two main rules for post-processing of the prediction results.
 
 First, based on our data set, we think all words that can be a name should be capitalized.  This rule will result in wrong prediction for 23 names ( like Lars von Triers  ) and we put all those names into white name list.
 
-Second, we mark all examples which contains words in the frequent words list as not a name. The frequent word list are downloaded from 
+Second, we mark all examples which contains words in the frequent words list as not a name. The frequent word list are downloaded from URL?
 
- % (set 0.5 as threshold, with no l1 (LASSO) or l2 (Ridge) regularization)
+\begin{table}[h]
+\centering
+\caption{Performance of classifier X}
+\label{my-label2}
+\begin{tabular}{llll}
+classifier          & precision & recall & F1    \\
+Linear regression   & 0.408     & 0.620  & 0.492 \\
+Logistic regression & 0.401     & 0.650  & 0.496 \\
+Random Forest       & 0.608     & 0.622  & 0.615 \\
+Decision tree       & 0.528     & 0.529  & 0.528 \\
+SVM                 & 0.398     & 0.686  & 0.504
+\end{tabular}
+\end{table}
+
+From table \ref{my-label2} we can find that Random Forest is also the classifier that has the best performance.
+
+So if we apply classifier X with Random Forest on set J, the final result is:
+\textbf{precision : 0.519, recall : 0.607, F1 : 0.560.   }
+
+\section{Discussion}
+
+Unfortunately, we have not achieved the required precision. The reasons are that we can not think of better features of person names. Unlike names of companies or organizations which usually contains clearly indications like "Ltd","NGOs","chartered" etc. 
+
 
 
 %
@@ -708,7 +743,7 @@ We use scikit-learn \cite{scikit-learn} as our machine learning program library 
 % references without citing it in the main text, use \nocite
 %\nocite{langley00}
 
-\bibliography{example_paper}
+\bibliography{report_reference}
 \bibliographystyle{icml2017}
 
 \end{document} 

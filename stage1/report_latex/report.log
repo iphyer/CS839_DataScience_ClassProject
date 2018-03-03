@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  28 FEB 2018 17:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 MAR 2018 16:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**example_paper.tex
-(./example_paper.tex
+**report.tex
+(./report.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls
@@ -288,8 +288,8 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 101.
 \cv@tmpc@=\count115
 \cv@tmpc=\count116
 )
-(./example_paper.aux)
-\openout1 = `example_paper.aux'.
+(./report.aux)
+\openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
 LaTeX Font Info:    ... okay on input line 49.
@@ -306,8 +306,7 @@ LaTeX Font Info:    ... okay on input line 49.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
 LaTeX Font Info:    ... okay on input line 49.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 49.
-
-(/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1ptm.fd
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -355,9 +354,9 @@ LaTeX Info: Redefining \ref on input line 49.
 LaTeX Info: Redefining \pageref on input line 49.
 LaTeX Info: Redefining \nameref on input line 49.
 
-(./example_paper.out) (./example_paper.out)
+(./report.out) (./report.out)
 \@outlinefile=\write3
-\openout3 = `example_paper.out'.
+\openout3 = `report.out'.
 
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 98.
@@ -401,7 +400,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--127
 
 
 ]
-(./example_paper.bbl
+(./report.bbl
 Underfull \hbox (badness 1681) in paragraph at lines 10--17
 \T1/ptm/m/n/10 Huang, Dan, Ng, An-drew Y., and Potts, Christo-
  []
@@ -418,36 +417,35 @@ aclweb .
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 706.
- [2
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 706.
- (./example_paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 706.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 706.
-Package rerunfilecheck Info: File `example_paper.out' has not changed.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 749.
+ [2]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 749.
+ (./report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 749.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 749.
+Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 706.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 749.
  ) 
 Here is how much of TeX's memory you used:
- 6520 strings out of 492995
- 93656 string characters out of 6132704
- 188039 words of memory out of 5000000
- 9958 multiletter control sequences out of 15000+600000
- 38552 words of font info for 47 fonts, out of 8000000 for 9000
+ 6530 strings out of 492995
+ 93645 string characters out of 6132704
+ 189135 words of memory out of 5000000
+ 9963 multiletter control sequences out of 15000+600000
+ 41339 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,11n,45p,687b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,11n,45p,680b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
 17/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2017/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/
-type1/urw/times/utmri8a.pfb>
-Output written on example_paper.pdf (2 pages, 72737 bytes).
+type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
+times/utmri8a.pfb>
+Output written on report.pdf (2 pages, 81078 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 68 compressed objects within 1 object stream
- 25 named destinations out of 1000 (max. 500000)
+ 87 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
+ 28 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
