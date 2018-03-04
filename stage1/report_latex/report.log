@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 MAR 2018 16:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 MAR 2018 19:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -395,12 +395,77 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--127
 [][][][][]$\T1/pcr/m/n/9 http : / / ai . stanford . edu / ~amaas / data /
  []
 
+
+Underfull \hbox (badness 1062) in paragraph at lines 194--195
+[]\T1/ptm/m/n/10 if yes, it may
+ []
+
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
 ]
-(./report.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
+[]\T1/ptm/m/n/10 if yes, it
+ []
+
+
+Underfull \hbox (badness 4120) in paragraph at lines 196--197
+[]\T1/ptm/m/n/10 if yes, a
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
+[]\T1/ptm/m/n/10 Jim
+ []
+
+
+Overfull \hbox (12.32057pt too wide) in paragraph at lines 199--200
+[]
+ []
+
+
+Overfull \hbox (6.08058pt too wide) in paragraph at lines 200--201
+[]
+ []
+
+
+Overfull \hbox (10.20047pt too wide) in paragraph at lines 201--202
+[]
+ []
+
+
+Overfull \hbox (3.96048pt too wide) in paragraph at lines 202--203
+[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 756--757
+\T1/pcr/m/n/10 google . com / view / cs839projectgroup7 /
+ []
+
+
+Underfull \hbox (badness 7814) in paragraph at lines 756--757
+\T1/pcr/m/n/10 home / stage-[]1$[][] \T1/ptm/m/n/10 and there are links for all
+ the
+ []
+
+
+Underfull \hbox (badness 5036) in paragraph at lines 756--757
+\T1/ptm/m/n/10 re-quired di-rec-to-ries for the files. And we store
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 756--757
+\T1/ptm/m/n/10 all our data and pro-gram in Github [][]$\T1/pcr/m/n/10 https :
+ []
+
+(./report.bbl [2]
 Underfull \hbox (badness 1681) in paragraph at lines 10--17
 \T1/ptm/m/n/10 Huang, Dan, Ng, An-drew Y., and Potts, Christo-
  []
@@ -417,24 +482,26 @@ aclweb .
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 749.
- [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 749.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 767.
+ [3
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 767.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 749.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 749.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 767.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 767.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 749.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 767.
  ) 
 Here is how much of TeX's memory you used:
- 6530 strings out of 492995
- 93645 string characters out of 6132704
- 189135 words of memory out of 5000000
+ 6531 strings out of 492995
+ 93651 string characters out of 6132704
+ 190135 words of memory out of 5000000
  9963 multiletter control sequences out of 15000+600000
  41339 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,11n,45p,680b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,11n,45p,719b,407s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
@@ -442,10 +509,10 @@ xlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on report.pdf (2 pages, 81078 bytes).
+Output written on report.pdf (3 pages, 83283 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
- 28 named destinations out of 1000 (max. 500000)
+ 94 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
+ 29 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

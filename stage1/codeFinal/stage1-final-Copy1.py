@@ -1,9 +1,5 @@
-
 # coding: utf-8
 
-
-
-get_ipython().magic(u'matplotlib inline')
 import pandas as pd
 import numpy as np
 import random
@@ -125,11 +121,6 @@ pd.set_option('display.max_rows', 1000)
 datanew[(datanew['docID']<=200) & (datanew['isFrequentword'] == 0) & (datanew['isPartial'] == 1)]
 
 
-# In[ ]:
-
-
-
-import random
 # x=train[['isCommon','wordlen','startPos','bag','preisCap','postisCap','preisCommon','postisCommon']]
 # y=train[['label']]
 
@@ -165,11 +156,11 @@ label = test['label']
 # precision+=precision_score(y_test, predsLG)
 # recall+=recall_score(y_test, predsLG)
 
-clf = RandomForestClassifier(n_estimators=200)
+clf = RandomForestClassifier(n_estimators=5000)
 clf.fit(X_train, y_train)
  #     print clf
 probRF = clf.predict_proba(X_test)
-predsRF = np.where(probRF[:, 1] > 0.31, 1, 0)
+predsRF = np.where(probRF[:, 1] > 0.4, 1, 0)
 p = [i[1] for i in probRF]
 X_test['pred'] = np.array(p)
 X_test['word'] = word

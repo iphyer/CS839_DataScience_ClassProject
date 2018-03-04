@@ -185,6 +185,25 @@ For the marked up text files, we do the following steps to clean the generated e
 
 \subsection{ Feature Engineering}
 
+We propose the following binary and numeric features for the  data:
+
+\begin{description}
+\item[Is the first letter of the string  uppercase?] Jim Green
+\item[the length of the words] too short or too long words are not names
+\item[Whether the string contains common names] if yes, the string can be a name
+\item[Whether the string contains city names] if yes, it may not be a person name 
+\item[Whether the string contains county names] if yes, it may not be a person name 
+\item[Whether the string contains common words] if yes, a string contains words like a, is, are may not be a person name
+\item[Is the word \textbf{before} the current example uppercase?]  "\textbf{like}" Jim Green 
+\item[Is the word \textbf{after} the current example uppercase?] Jim Green \textbf{says}
+\item[Is the word \textbf{before} the current example a common word?] personal name should not contain too common word like a, is, too
+\item[Is the word \textbf{after} the current example a common word?] personal name should not contain too common word like a, is, too
+\item[Is the word \textbf{before} the current example a country name?] Country names like Afghanistan, Albania, Germany are not person names although they looks like person names.
+\item[Is the word \textbf{after} the current example a country name?] Country names like Afghanistan, Albania, Germany are not person names although they looks like person names.
+
+
+\end{description}
+
 \subsection{Performance of classifier M}
 We chose 5 different machine learning models:
 
@@ -242,9 +261,9 @@ So if we apply classifier X with Random Forest on set J, the final result is:
 
 \section{Discussion}
 
-Unfortunately, we have not achieved the required precision. The reasons are that we can not think of better features of person names. Unlike names of companies or organizations which usually contains clearly indications like "Ltd","NGOs","chartered" etc. 
+Unfortunately, we have not achieved the required precision. 
 
-
+One of the biggest problems that we could not solve was the partial name in our data. For names of more than one word(e.g. Steve Jobs), our preprocssing steps will generate examples of partial names(e.g. Steve and Jobs), which are negative examples. We find it difficult to distinguish and get rid of these partial names, without the use of the real label. We tried to use a list of rules and features (e.g. preIsCap, postisCap, position, etc.) to filter out these partial names, but this will result in two hundred of positive examples being deleted, which is unacceptable. If we can find a way to filter out these nosy partial names in our data, we will finally reach a precision/recall of about 0.8/0.7.
 
 %
 %\section{Relate Work}
@@ -734,8 +753,7 @@ Unfortunately, we have not achieved the required precision. The reasons are that
 %We would like to sincerely thank Prof.
 
 \subsection*{Software and Data}
-
-We provide all our data and program in Github and you can check them online \url{https://github.com/iphyer/CS839ClassProject}.
+Our group website for this project is \url{https://sites.google.com/view/cs839projectgroup7/home/stage-1} and there are links for all the required directories for the files. And we store all our data and program in Github \url{https://github.com/iphyer/CS839ClassProject}.
 
 We use scikit-learn \cite{scikit-learn} as our machine learning program library and Pandas \cite{mckinney2015pandas} for data processing.
 
