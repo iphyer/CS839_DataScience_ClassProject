@@ -6,6 +6,7 @@
 %\documentstyle[icml2017,epsf,natbib]{article}
 % If you rely on Latex2e packages, like most moden people use this:
 \documentclass{article}
+\usepackage{booktabs}
 
 % use Times
 \usepackage{times}
@@ -223,13 +224,16 @@ We chose 5 different machine learning models:
 \centering
 \caption{Performance of classifier M}
 \label{table1}
-\begin{tabular}{c|c|c|c}
+\begin{tabular}{llll}
+\toprule
 classifier   M    & precision & recall & F1     \\  
+\midrule
 Linear regression   & 0.023     & 0.975  & 0.045 \\  
 Logistic regression & 0.038     & 0.681  & 0.073 \\  
 Random Forest       & 0.078     & 0.112  & 0.092 \\  
 Decision tree       & 0.054     & 0.114  & 0.073 \\  
-SVM                 & 0.004     & 0.011  & 0.006  
+SVM                 & 0.004     & 0.011  & 0.006  \\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -248,12 +252,15 @@ Second, we mark all examples which contains words in the frequent words list as 
 \caption{Performance of classifier X}
 \label{my-label2}
 \begin{tabular}{llll}
+\toprule
 classifier          & precision & recall & F1    \\
+\midrule 
 Linear regression   & 0.408     & 0.620  & 0.492 \\
 Logistic regression & 0.401     & 0.650  & 0.496 \\
-Random Forest       & 0.608     & 0.622  & 0.615 \\
+Random Forest       & 0.651     & 0.708  & 0.679 \\
 Decision tree       & 0.528     & 0.529  & 0.528 \\
-SVM                 & 0.398     & 0.686  & 0.504
+SVM                 & 0.398     & 0.686  & 0.504 \\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -266,7 +273,7 @@ So if we apply classifier X and rules to form a new classifier Y on set J, the f
 
 Unfortunately, we have not achieved the required precision. 
 
-One of the biggest problems that we could not solve was the partial name in our data. For names of more than one word(e.g. Steve Jobs), our prepossessing steps will generate examples of partial names(e.g. Steve and Jobs), which are negative examples. We find it difficult to distinguish and get rid of these partial names, without the use of the real label. We tried to use a list of rules and features (e.g. preIsCap, postisCap, position, etc.) to filter out these partial names, but this will result in two hundred of positive examples being deleted, which is unacceptable. If we can find a way to filter out these nosy partial names in our data, we will finally reach a precision/recall of about 0.8/0.7.
+One of the biggest problems that we could not solve was the partial name in our data. For names of more than one word(e.g. Steve Jobs), our prepossessing steps will generate examples of partial names(e.g. Steve and Jobs), which are negative examples. We find it difficult to distinguish and get rid of these partial names, without the use of the real label. We tried to use a list of rules and features (e.g. preIsCap, postisCap, position, etc.) to filter out these partial names, but this will result in two hundred of positive examples being deleted, which is unacceptable. If we can find a way to filter out these nosy partial names in our data, we will finally reach a precision/recall of about 0.8/0.7.To avoid over-fitting, we do not apply white-list and black-list for the result although they can greatly help the improvement of final results. 
 
 %
 %\section{Relate Work}
