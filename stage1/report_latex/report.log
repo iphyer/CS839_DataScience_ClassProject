@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 MAR 2018 19:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  3 MAR 2018 19:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -445,27 +445,67 @@ Overfull \hbox (3.96048pt too wide) in paragraph at lines 202--203
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 756--757
+Underfull \hbox (badness 1688) in paragraph at lines 205--206
+[]\T1/ptm/m/n/10 For 1000 com-mon En-glish words, we get from
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
+\T1/ptm/m/n/10 this web-site, [][]$\T1/pcr/m/n/10 https : / / gist . github . c
+om /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
+\T1/pcr/m/n/10 deekayen / 4148741$[][]\T1/ptm/m/n/10 , slightly mod-i-fied dur-
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
+\T1/ptm/m/n/10 this web-site, [][]$\T1/pcr/m/n/10 https : / / gist . github . c
+om /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
+\T1/pcr/m/n/10 kalinchernev / 486393efcca01623b18d$[][]\T1/ptm/m/n/10 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
+[][]$\T1/pcr/m/n/10 https : / / surnames . behindthename . com /
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 759--760
 \T1/pcr/m/n/10 google . com / view / cs839projectgroup7 /
  []
 
 
-Underfull \hbox (badness 7814) in paragraph at lines 756--757
+Underfull \hbox (badness 7814) in paragraph at lines 759--760
 \T1/pcr/m/n/10 home / stage-[]1$[][] \T1/ptm/m/n/10 and there are links for all
  the
  []
 
 
-Underfull \hbox (badness 5036) in paragraph at lines 756--757
+Underfull \hbox (badness 5036) in paragraph at lines 759--760
 \T1/ptm/m/n/10 re-quired di-rec-to-ries for the files. And we store
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 756--757
+Underfull \hbox (badness 10000) in paragraph at lines 759--760
 \T1/ptm/m/n/10 all our data and pro-gram in Github [][]$\T1/pcr/m/n/10 https :
  []
 
-(./report.bbl [2]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+(./report.bbl
 Underfull \hbox (badness 1681) in paragraph at lines 10--17
 \T1/ptm/m/n/10 Huang, Dan, Ng, An-drew Y., and Potts, Christo-
  []
@@ -482,22 +522,22 @@ aclweb .
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 767.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 770.
  [3
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 767.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 770.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 767.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 767.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 770.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 770.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 767.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 770.
  ) 
 Here is how much of TeX's memory you used:
  6531 strings out of 492995
  93651 string characters out of 6132704
- 190135 words of memory out of 5000000
+ 191135 words of memory out of 5000000
  9963 multiletter control sequences out of 15000+600000
  41339 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -509,10 +549,10 @@ xlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/20
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on report.pdf (3 pages, 83283 bytes).
+Output written on report.pdf (3 pages, 84635 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
+ 100 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  29 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

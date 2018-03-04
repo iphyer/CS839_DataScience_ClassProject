@@ -155,7 +155,7 @@ label = test['label']
 # predsLG=np.where(probLG[:,1]>0.3,1,0)
 # precision+=precision_score(y_test, predsLG)
 # recall+=recall_score(y_test, predsLG)
-
+'''
 clf = RandomForestClassifier(n_estimators=5000)
 clf.fit(X_train, y_train)
  #     print clf
@@ -167,7 +167,7 @@ X_test['word'] = word
 X_test['label'] = label
 precision += precision_score(y_test, predsRF)
 recall += recall_score(y_test, predsRF)
-    
+''' 
 # clf = tree.DecisionTreeClassifier()
 # clf.fit(X_train, y_train)
 # probDT=clf.predict_proba(X_test)
@@ -182,31 +182,46 @@ recall += recall_score(y_test, predsRF)
 #     predsSV=np.where(probSV[:,1]>0.3,1,0)
 #     precision+=precision_score(y_test, predsSV)
 #     recall+=recall_score(y_test, predsSV)
-    
+
+'''
 precision = precision
 recall = recall
 f1 = 2*precision*recall/(precision+recall)
 print(precision, recall, f1)
-
+'''
 
 # In[ ]:
 
-
+'''
 pd.set_option('display.max_rows', 1000)
 FP = X_test[['word','docID']][(X_test['pred'] > 0.4) & (X_test['label'] == 0)]
 # print FP.shape
 FP
-
+'''
 
 # In[ ]:
 
-
+'''
 print(FP.to_csv(sep='\t', index=False))
-
+'''
 
 # In[ ]:
 
-
+'''
 f1 = 2*precision*recall/(precision+recall)
 print(precision, recall, f1)
+'''
+
+# new test
+# In[5]:
+seed = 0
+num_trees = 20
+max_features = 14
+max_depth = 50
+
+model = RandomForestClassifier(n_estimators=num_trees, max_depth=max_depth, random_state=seed, max_features=max_features)
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+print(confusion_matrix(y_test,predictions))
+print(classification_report(y_test,predictions))
 
