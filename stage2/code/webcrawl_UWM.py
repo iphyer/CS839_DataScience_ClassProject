@@ -109,7 +109,8 @@ if __name__ == "__main__":
     print("We only need first 10000 Books in the searching results.")
     MAX_PAGES = 1001
     for i in range(2,MAX_PAGES):
-        print("Processing Page" + str(i))
+        if ( i % 100 == 0):
+            print("Now Processing Page" + str(i))
         tmp_URL = preURL + str(i) + postURL
         tmp_r = requests.get(tmp_URL)
         tmp_soup =  bs(tmp_r.text,"lxml")
@@ -132,6 +133,8 @@ if __name__ == "__main__":
         parseBookDetailPage(itemURL,df,keyID)
         df.at[keyID,'TITLE'] = value
         keyID = keyID + 1
+        if (keyID % 500 == 0):
+            print ("Now processing Book" + keyID)
         #print(itemURL)
     df.to_csv("BOOKS_UWM.csv",sep = '\t',index = False)
     print("================The End===========================")
