@@ -47,22 +47,25 @@ def parseBookDetailPage(pageURL,pandasDF,rowIndex):
 def dictify(ul):
     result = {}
     for li in ul.find_all("li", recursive=False):
-        key = next(li.stripped_strings)
-        ul = li.find("ul")
-        #print(li)
-        if ul:
-            tmpstr = ""
-            for item in li.findAll('a'):
-                tmpstr += item.get_text() + ","
-            #result[key] = dictify(ul)
+        if li:
+            key = next(li.stripped_strings)
+            ul = li.find("ul")
             #print(li)
+            if ul:
+                tmpstr = ""
+                for item in li.findAll('a'):
+                    tmpstr += item.get_text() + ","
+                #result[key] = dictify(ul)
+                #print(li)
 
-            result[key] = tmpstr
+                result[key] = tmpstr
+            else:
+                tmp_list = list()
+                for span in li.findAll('span'):
+                    tmp_list.append(span.get_text())
+                result[key] = tmp_list[1].strip()#li.get_text().split()[1]
         else:
-            tmp_list = list()
-            for span in li.findAll('span'):
-                tmp_list.append(span.get_text())
-            result[key] = tmp_list[1].strip()#li.get_text().split()[1]
+            print("The table of the book is wrong")
     return result
 
 
@@ -110,7 +113,7 @@ if __name__ == "__main__":
     MAX_PAGES = 1001
     for i in range(2,MAX_PAGES):
         if ( i % 100 == 0):
-            print("Now Processing Page" + str(i))
+            print("Now Processing Page " + str(i))
         tmp_URL = preURL + str(i) + postURL
         tmp_r = requests.get(tmp_URL)
         tmp_soup =  bs(tmp_r.text,"lxml")
@@ -134,9 +137,9 @@ if __name__ == "__main__":
         df.at[keyID,'TITLE'] = value
         keyID = keyID + 1
         if (keyID % 500 == 0):
-            print ("Now processing Book" + keyID)
+            print ("Now processing Book " + str(keyID))
         #print(itemURL)
-    df.to_csv("BOOKS_UWM.csv",sep = '\t',index = False)
+    df.to_csv("BOOKS_UWM.csv",sep = '\t',index = False, encoding='utf-8')
     print("================The End===========================")
 
     #exit(0)

@@ -1,0 +1,42 @@
+================The Start=========================
+Totoal results is 25,639 Books
+Totoal Pages of the searching result is 2564
+We only need first 10000 Books in the searching results.
+Now Processing Page 100
+Now Processing Page 200
+Now Processing Page 300
+Now Processing Page 400
+Now Processing Page 500
+Now Processing Page 600
+Now Processing Page 700
+Now Processing Page 800
+Now Processing Page 900
+Now Processing Page 1000
+===Error Uncaught record field : Series
+===Error Uncaught record field : ISSNs
+===Error Uncaught record field : Preceding Titles
+===Error Uncaught record field : Succeeding Titles
+Now processing Book 500
+===Error Uncaught record field : Credits
+===Error Uncaught record field : Cartographic Data
+Now processing Book 1000
+Now processing Book 1500
+Now processing Book 2000
+Now processing Book 2500
+Now processing Book 3000
+Now processing Book 3500
+Now processing Book 4000
+Now processing Book 4500
+Now processing Book 5000
+Now processing Book 5500
+Now processing Book 6000
+Now processing Book 6500
+Now processing Book 7000
+Now processing Book 7500
+Now processing Book 8000
+Now processing Book 8500
+Now processing Book 9000
+===Error Uncaught record field : Finding Aids
+Now processing Book 9500
+Now processing Book 10000
+================The End===========================
