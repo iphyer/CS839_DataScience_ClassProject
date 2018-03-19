@@ -1,0 +1,89 @@
+================The Start=========================
+We only need first 10000 Books in the searching results.
+Processing Page 50
+Processing Page 100
+Processing Page 150
+Processing Page 200
+Processing Page 250
+Processing Page 300
+Processing Page 350
+Processing Page 400
+Processing Page 450
+Processing Page 500
+===Error Uncaught record field in Table 1: Names
+===Error Uncaught record field in Table 1: Series
+===Error Uncaught record field in Table 2 : Physical Description
+===Error Uncaught record field in Table 2 : Includes
+===Error Uncaught record field in Table 2 : Summary
+Now processing Book 0
+===Error Uncaught record field in Table 1: Online Access
+===Error Uncaught record field in Table 2 : Copyright
+===Error Uncaught record field in Table 2 : Notes
+===Error Uncaught record field in Table 1: Main Author
+===Error Uncaught record field in Table 1: Edition
+===Error Uncaught record field in Table 1: Speaker
+===Error Uncaught record field in Table 2 : Performer
+===Error Uncaught record field in Table 1: On-screen presenter
+===Error Uncaught record field in Table 2 : Subject
+===Error Uncaught record field in Table 2 : Language Note
+===Error Uncaught record field in Table 2 : More about this Title
+===Error Uncaught record field in Table 1: Vernacular
+===Error Uncaught record field in Table 2 : Meeting Name
+===Error Uncaught record field in Table 1: Related Information
+===Error Uncaught record field in Table 2 : Target Audience
+===Error Uncaught record field in Table 2 : Uniform Title
+===Error Uncaught record field in Table 2 : System Details
+===Error Uncaught record field in Table 2 : Restrictions
+===Error Uncaught record field in Table 2 : Abstract
+===Error Uncaught record field in Table 2 : Distributed
+===Error Uncaught record field in Table 2 : Publication Frequency
+===Error Uncaught record field in Table 2 : Continued by
+===Error Uncaught record field in Table 2 : Review
+===Error Uncaught record field in Table 2 : Merges
+===Error Uncaught record field in Table 2 : ISSN
+===Error Uncaught record field in Table 1: Regions
+===Error Uncaught record field in Table 2 : Supersedes
+===Error Uncaught record field in Table 2 : Continues
+===Error Uncaught record field in Table 2 : Contains
+===Error Uncaught record field in Table 1: Ed
+Now processing Book 500
+===Error Uncaught record field in Table 2 : Thesis/Dissertation
+===Error Uncaught record field in Table 2 : Scale
+===Error Uncaught record field in Table 2 : Published (Most Recently)
+===Error Uncaught record field in Table 2 : Published (Formerly)
+===Error Uncaught record field in Table 2 : Absorbed
+Now processing Book 1000
+===Error Uncaught record field in Table 2 : Event
+===Error Uncaught record field in Table 1: Connect via http
+Now processing Book 1500
+===Error Uncaught record field in Table 1: Rapporteur
+Now processing Book 2000
+===Error Uncaught record field in Table 2 : Continues in Part
+===Error Uncaught record field in Table 2 : In
+===Error Uncaught record field in Table 2 : Scope and Content
+Now processing Book 2500
+Now processing Book 3000
+===Error Uncaught record field in Table 1: Editor
+===Error Uncaught record field in Table 1: Download
+Now processing Book 3500
+===Error Uncaught record field in Table 1: Presenter
+===Error Uncaught record field in Table 1: Compiler
+===Error Uncaught record field in Table 2 : Superseded by
+Now processing Book 4000
+Now processing Book 4500
+Now processing Book 5000
+===Error Uncaught record field in Table 2 : Indexes
+===Error Uncaught record field in Table 2 : Produced
+Now processing Book 5500
+Now processing Book 6000
+Now processing Book 6500
+===Error Uncaught record field in Table 2 : Continued in Part by
+Now processing Book 7000
+Now processing Book 7500
+Now processing Book 8000
+===Error Uncaught record field in Table 2 : Manufactured
+Now processing Book 8500
+===Error Uncaught record field in Table 2 : Absorbed by
+Now processing Book 9000
+Now processing Book 9500
+================The End===========================

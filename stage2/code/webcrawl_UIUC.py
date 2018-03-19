@@ -24,26 +24,39 @@ def collectBookURL(webpage,result_dict):
         result_dict[a['href']] = a.get_text().replace('/',"")
         
 def parseBookDetailPage(pageURL,pandasDF,rowIndex):
-    return 0
-    """
     tmp_r = requests.get(pageURL)
-    tmp_soup =  bs(tmp_r.text, "html.parser")
-    pandasDF.at[rowIndex,'ID'] = rowIndex
-    #pandasDF.at[rowIndex,'TITLE'] = tmp_soup.find('div',{'class':'titles flex_row'}).get_text().split('\n')[2]
-    # processing information in Publication Details
-    publicationDetails = tmp_soup.find('ul',{'class': "publication expand_list"})
-    # keep the level of <li></li> elements
-    dictFields = dictify(publicationDetails)
-
-    # loop all key,value pairs of dictFields
-
-    for key,val in dictFields.items():
-        if (key.upper() in pandasDF.columns):
-            pandasDF.at[rowIndex, key.upper()]= val
+    tmp_soup =  bs(tmp_r.text,"lxml")
+    tableList = tmp_soup.find_all('table')
+    #print(len(tableList))
+    Info_table = tableList[2]
+    ISBN_table = tableList[3]
+    InfoSummary = dictify(Info_table)
+    # Processing general Infomation Table
+    for key,val in InfoSummary.items():
+        if ( key in pandasDF.columns):
+            pandasDF.at[rowIndex, key]= val
         else:
-            print("===Error Uncaught record field : " + key)
-            pandasDF.at[rowIndex, key.upper()]= val
-    """
+            print("===Error Uncaught record field in Table 1: " + key)
+            pandasDF.at[rowIndex, key]= val
+    # Processing ISBN Table
+    ISBNSummary = dictify(ISBN_table)
+    for key,val in ISBNSummary.items():
+        if ( key in pandasDF.columns):
+            pandasDF.at[rowIndex, key]= val
+        else:
+            print("===Error Uncaught record field in Table 2 : " + key)
+            pandasDF.at[rowIndex, key]= val
+
+
+# dictify all the elements of HTML Table
+def dictify(tableHTML):
+    result_dict = dict()
+    for table_rows in tableHTML.select("tr"):
+        content = table_rows.text.split(':')
+        result_dict[content[0].strip()] =  content[1].strip()
+    return result_dict
+
+    
 
 if __name__ == "__main__":
     """
@@ -55,9 +68,8 @@ if __name__ == "__main__":
     """
     print("================The Start=========================")
 
-    
     # 20 Books per page, so 500 pages give 10000 Books.
-    print("We only need first 10000 Books in the searching results.")
+    #print("We only need first 10000 Books in the searching results.")
     # dictory to store URL for the details pages of Book
     dict_BookDetailsURL = dict()
     # Rotate to get all URL of Books
@@ -65,24 +77,27 @@ if __name__ == "__main__":
     #postURL = '&q=Data+Science'
     # 10 Books per page, so 1000 pages give 10000 Books.
     print("We only need first 10000 Books in the searching results.")
-    MAX_PAGES = 5#01
+    MAX_PAGES = 501
     for i in range(1,MAX_PAGES):
-        print("Processing Page" + str(i))
+        if ( i % 50 == 0):
+            print("Processing Page " + str(i))
         tmp_URL = preURL + str(i)
         tmp_r = requests.get(tmp_URL)
         tmp_soup =  bs(tmp_r.text,"lxml")
         collectBookURL(tmp_soup,dict_BookDetailsURL)
 
     # set up DataFrame to store the data
-    df = pd.DataFrame(columns=['ID','TITLE','CREATOR','FORMAT','PUBLICATION DATES','CONTRIBUTORS','PUBLICATION','PHYSICAL DETAILS','ISBNS','OCLC'])
+    df = pd.DataFrame(columns=['ID','TITLE','Author','Other Names','Published','Topics','Genres','Tags','ISBN'])
     
     # Processing the detailed page of each book
     keyID = 0
     for key,value in dict_BookDetailsURL.items():
-        itemURL = 'https://vufind.carli.illinois.edu' + key
+        itemURL = 'https://vufind.carli.illinois.edu' + key + '/Description'
         parseBookDetailPage(itemURL,df,keyID)
         df.at[keyID,'ID'] = keyID
         df.at[keyID,'TITLE'] = value
+        if (keyID % 500 == 0):
+            print ("Now processing Book " + str(keyID))
         keyID = keyID + 1
         #print(itemURL)
     df.to_csv("BOOKS_UIUC.csv",sep = '\t',index = False, encoding='utf-8')
