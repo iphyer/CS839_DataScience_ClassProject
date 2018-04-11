@@ -30,6 +30,10 @@ There are :
 
 # Additional Data file in In tis directory
 
-provide a file that lists all tuple pairs that survive the blocking step. 
-provide a file that lists all tuple pairs in the sample you have taken, together with the labels, one label per each tuple pair. This file is referred to as file G in Sec 3.8 of the how-to guide. 
-provide two files that describe the sets I and J, respectively (see Sec 3.8 of the how-to guide for an explanation of these files).
+##provide a file that lists all tuple pairs that survive the blocking step. 
+
+##provide a file that lists all tuple pairs in the sample you have taken, 
+together with the labels, one label per each tuple pair. This file is referred to as file G in Sec 3.8 of the how-to guide. 
+
+##provide two files that describe the sets I and J, respectively (see Sec 3.8 
+of the how-to guide for an explanation of these files).
