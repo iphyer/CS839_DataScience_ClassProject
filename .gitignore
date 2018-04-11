@@ -1,2 +1,3 @@
 .DS_Store
 ./stage3/.idea
+./stage2/.ipynb*
