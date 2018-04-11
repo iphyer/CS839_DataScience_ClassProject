@@ -28,7 +28,7 @@ There are :
 * 6963 tuples in table `TableA.csv`
 * 5730 tuples in table `TableB.csv`
 
-# Additional Data file in In tis directory
+# Other Data Files in In tis directory
 
 ##provide a file that lists all tuple pairs that survive the blocking step. 
 
