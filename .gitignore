@@ -1,3 +1,6 @@
+.gitignore
 .DS_Store
 ./stage3/.idea
 ./stage2/.ipynb*
+./stage3/code/Basic*
+
