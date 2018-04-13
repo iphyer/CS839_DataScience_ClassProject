@@ -30,10 +30,18 @@ There are :
 
 # Other Data Files in In tis directory
 
-##provide a file that lists all tuple pairs that survive the blocking step. 
+## file that lists all tuple pairs that survive the blocking step. 
 
-##provide a file that lists all tuple pairs in the sample you have taken, 
-together with the labels, one label per each tuple pair. This file is referred to as file G in Sec 3.8 of the how-to guide. 
+This is the  file [Set_C.csv]() and there are `1286` tuples survive the 
+blocking 
+steps.
 
-##provide two files that describe the sets I and J, respectively (see Sec 3.8 
-##of the how-to guide for an explanation of these files).
+## file that lists all tuple pairs in the sample you have taken
+
+This is the file [Set_G.csv] which contains `500` tuple pairs and each with a
+ label to indicate whether they are the same entity. 
+  
+
+## two files that describe the sets I and J
+
+
