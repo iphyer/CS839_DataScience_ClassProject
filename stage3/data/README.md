@@ -38,10 +38,10 @@ steps.
 
 ## file that lists all tuple pairs in the sample you have taken
 
-This is the file [Set_G.csv] which contains `500` tuple pairs and each with a
+This is the file [Set_G.csv]() which contains `500` tuple pairs and each with a
  label to indicate whether they are the same entity. 
   
 
-## two files that describe the sets I and J
+## file that describe the sets I 
 
-
+## file that describe the sets J
