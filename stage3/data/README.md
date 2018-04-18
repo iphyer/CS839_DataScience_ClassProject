@@ -48,6 +48,12 @@ tuple pairs
 
 ## file that describe the sets I
 
-
+We split [Set_G.csv](./Set_G.csv) into [Set_I](./Set_I.csv) as training set
+which contains `200` tuple pairs.
 
 ## file that describe the sets J
+
+This is the reaming tuple pairs from [Set_G.csv](./Set_G.csv) and not in [Set_I](./Set_I.csv)
+which contains `100` tuple pairs as test set.
+
+## other files are meta-data that used during training
