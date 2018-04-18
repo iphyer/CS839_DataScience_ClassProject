@@ -53,8 +53,10 @@ which contains `200` tuple pairs.
 
 ## file that describe the sets J
 
-This is the reaming tuple pairs from [Set_G.csv](./Set_G.csv) and not in [Set_I](./Set_I.csv)
-which contains `100` tuple pairs as test set.
+[Set_J](./Set_J.csv) contains the reaming tuple pairs from [Set_G.csv](./Set_G
+.csv) and not in [Set_I](./Set_I.csv)
+
+[Set_J](./Set_J.csv) contains `100` tuple pairs as test set.
 
 ## other files are meta-data that used during training
 
