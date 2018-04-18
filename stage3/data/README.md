@@ -32,14 +32,16 @@ There are :
 
 ## file that lists all tuple pairs that survive the blocking step. 
 
-This is the  file [Set_C.csv](Set_C.csv) and there are `1286` tuples survive
+This is the  file [Set_C.csv](Set_C.csv) and there are `606` tuples survive
  the 
 blocking 
 steps.
 
 ## file that lists all tuple pairs in the sample you have taken
 
-This is the file [Set_G.csv](./Set_G.csv) which contains `500` tuple pairs and
+This is the file [Set_G.csv](./Set_G.csv) sampled from [Set_C.csv](Set_C.csv)  which contains `300` 
+tuple pairs
+ and
  each with a
  label to indicate whether they are the same entity. 
   
