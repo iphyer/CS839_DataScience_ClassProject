@@ -57,3 +57,8 @@ This is the reaming tuple pairs from [Set_G.csv](./Set_G.csv) and not in [Set_I]
 which contains `100` tuple pairs as test set.
 
 ## other files are meta-data that used during training
+
+These files are `label_S_ltable.csv`,
+`label_S_ltable.metadata`,
+`label_S_rtable.csv`,	 
+`label_S_rtable.metadata`.
