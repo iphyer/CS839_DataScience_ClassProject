@@ -1,6 +1,6 @@
 # Stage 4 data file folder
 
-This is the file folder for stages. And it contains
+This is the data file folder for stages. And it contains
 
 ## CSV file storing Table E
 
