@@ -8,4 +8,4 @@ Project Requirement Descriptions are here:
 * [stage3](https://github.com/iphyer/CS839ClassProject/blob/master/ProjectDescriptions/CS%20839%20Spring%202018%2C%20Project%20Stage%203%20-%20AnHai's%20Group.pdf)
 * [stage4](https://github.com/iphyer/CS839ClassProject/blob/master/ProjectDescriptions/CS%20839%20Spring%202018%2C%20Project%20Stage%204%20-%20AnHai's%20Group.pdf)
 
-Our team homepage is [here](https://sites.google.com/view/cs839projectgroup7/home?authuser=0)
+You can read the report of each stage which is included in this Github.
